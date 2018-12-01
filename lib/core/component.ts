@@ -11,21 +11,21 @@ import {
   SimpleChanges,
   OnInit,
 } from '@angular/core';
-import { G2ChartConfig } from './config';
+import { F2ChartConfig } from './config';
 import { LoaderService } from './load.service';
 
 declare var window: any;
 
 @Component({
-  selector: 'g2-chart',
-  template: ``,
+  selector: 'f2-chart',
+  template: `<canvas #canvas></canvas>`,
   styles: [ `:host { display: block; } ` ]
 })
-export class G2ChartComponent implements OnInit, OnDestroy, OnChanges {
-  static idPool = 0;
+export class F2ChartComponent implements OnInit, OnDestroy, OnChanges {
   private instance: any;
-  private id: string;
   private initFlag = false;
+
+  @ViewChild('canvas') canvas;
 
   @Input() options: any;
   @Output() ready = new EventEmitter<any>();
@@ -33,7 +33,7 @@ export class G2ChartComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private el: ElementRef,
-    private config: G2ChartConfig,
+    private config: F2ChartConfig,
     private ss: LoaderService,
   ) {}
 
@@ -43,12 +43,10 @@ export class G2ChartComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     // 构建一个虚拟id
-    this.id = 'angular-g2-' + ++G2ChartComponent.idPool;
-    this.el.nativeElement.id = this.id;
     this.initFlag = true;
 
     // 已经存在对象无须进入懒加载模式
-    if (window.G2) {
+    if (window.F2) {
       this.init();
       return;
     }
@@ -67,9 +65,9 @@ export class G2ChartComponent implements OnInit, OnDestroy, OnChanges {
       this._destroy(false);
     }
     // 强制设置container为null，并使用 `id` 初始化
-    this.instance = new window.G2.Chart(
+    this.instance = new window.F2.Chart(
       Object.assign({}, this.options, {
-        id: this.id,
+        el: this.canvas.nativeElement,
         container: null,
       }),
     );

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { G2ChartModule } from '../g2-angular.module';
+import { F2ChartModule } from '../ngx-f2.module';
 
 const html = ``;
 
-describe('Component: g2-angular', () => {
+describe('Component: ngx-f2', () => {
   let fixture: ComponentFixture<any>;
   let context: TestNGComponent;
   let element: any;
@@ -14,7 +14,7 @@ describe('Component: g2-angular', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestNGComponent],
-      imports: [G2ChartModule],
+      imports: [F2ChartModule],
     });
     TestBed.overrideComponent(TestNGComponent, { set: { template: html } });
     fixture = TestBed.createComponent(TestNGComponent);
@@ -30,7 +30,7 @@ describe('Component: g2-angular', () => {
 });
 
 @Component({
-  selector: 'app-g2-angular-test',
+  selector: 'app-ngx-f2-test',
   template: '',
 })
 class TestNGComponent {}

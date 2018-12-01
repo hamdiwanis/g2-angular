@@ -1,3 +1,3 @@
-export { G2ChartComponent } from './core/component';
-export { G2ChartConfig } from './core/config';
-export * from './g2-angular.module';
+export { F2ChartComponent } from './core/component';
+export { F2ChartConfig } from './core/config';
+export * from './ngx-f2.module';

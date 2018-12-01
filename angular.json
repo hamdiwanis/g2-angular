@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "g2-angular": {
+    "ngx-f2": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -45,18 +45,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "g2-angular:build"
+            "browserTarget": "ngx-f2:build"
           },
           "configurations": {
             "prod": {
-              "browserTarget": "g2-angular:build:prod"
+              "browserTarget": "ngx-f2:build:prod"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "g2-angular:build"
+            "browserTarget": "ngx-f2r:build"
           }
         },
         "test": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "g2-angular-e2e": {
+    "ngx-f2-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -89,7 +89,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "protractor.conf.js",
-            "devServerTarget": "g2-angular:serve"
+            "devServerTarget": "ngx-f2:serve"
           }
         },
         "lint": {
@@ -102,7 +102,7 @@
       }
     }
   },
-  "defaultProject": "g2-angular",
+  "defaultProject": "ngx-f2",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "",

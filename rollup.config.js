@@ -38,7 +38,7 @@ switch (target) {
 
 export default {
   exports: "named",
-  name: "g2Angular",
+  name: "ngxF2",
   plugins,
   external: Object.keys(globals),
   globals,

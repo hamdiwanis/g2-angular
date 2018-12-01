@@ -1,0 +1,5 @@
+<div class="header">
+  NGX-<span class="highlight">F2</span>
+</div>
+
+<f2-chart *ngFor="let chart of charts" [options]="chart.options" (ready)="chart.ready($event)"></f2-chart>

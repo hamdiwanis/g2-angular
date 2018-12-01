@@ -20,6 +20,6 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "g2-angular"
+    "flatModuleId": "ngx-f2"
   }
 }

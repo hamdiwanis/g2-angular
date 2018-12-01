@@ -1,49 +1,49 @@
-# g2-angular
-Angular for Alipay [G2](https://antv.alipay.com/)
+# ngx-f2
+Angular for Antvis [F2](https://antv.alipay.com/zh-cn/f2/3.x/demo/index.html)
 
-[![NPM version](https://img.shields.io/npm/v/g2-angular.svg)](https://www.npmjs.com/package/g2-angular)
-[![Build Status](https://travis-ci.org/cipchk/g2-angular.svg?branch=master)](https://travis-ci.org/cipchk/g2-angular)
+[![NPM version](https://img.shields.io/npm/v/ngx-f2.svg)](https://www.npmjs.com/package/ngx-f2)
 
 ## Demo
 
-- [Live Demo](https://cipchk.github.io/g2-angular/)
-- [Stackblitz](https://stackblitz.com/edit/g2-angular)
+- [Live Demo](https://hamdiwanis.github.io/ngx-f2/)
+
+> This is a fork of [g2-angular](https://github.com/cipchk/g2-angular) by [cipchk](https://github.com/cipchk/g2-angular) but for F2 instead check it out if you use G2
 
 ## Install
 
-### 1. You can install `g2-angular` from npm.
+### 1. You can install `ngx-f2` from npm.
 
 ```bash
-npm install g2-angular --save
+npm install ngx-f2 --save
 ```
 
-### 2. **Important:** You need install and include `g2` library in app via `webpack bundler` or `html`.
+### 2. **Important:** You need install and include `f2` library in app via `webpack bundler` or `html`.
 
 **A: webpack bundler**
 
 ```bash
-npm install g2 --save
+npm install @antv/f2 --save
 ```
 
-You can choose load `g2` script file via `.angular-cli.json` or Lazy load.
+You can choose load `f2` script file via `.angular-cli.json` or Lazy load.
 
 *(Recommend)*
 ```json
 // .angular-cli.json
 "scripts": [
-  "../node_modules/g2/index.js"
+  "../node_modules/@antv/f2/dist/f2.min.js"
 ]
 ```
 
 or
 
 ```typescript
-import { G2ChartModule } from 'g2-angular';
+import { G2ChartModule } from 'ngx-f2';
 
 @NgModule({
   imports: [
     G2ChartModule.forRoot({
-      js: 'https://a.alipayobjects.com/g/datavis/g2/2.3.9/index.js'
+      js: 'https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0/f2.min.js'
     })
   ]
 });
@@ -52,23 +52,66 @@ import { G2ChartModule } from 'g2-angular';
 **B: index.html**
 
 ```html
-<script src="https://a.alipayobjects.com/g/datavis/g2/2.3.9/index.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.0/f2.min.js"></script>
 ```
 
 ## How to use it with:
 
+```html
+<f2-chart [options]="options" (ready)="ready($event)"></f2-chart>
+```
+
+```js
+      options = {
+        height: 300,
+        forceFit: true,
+      }
+      
+      ready(chart) {
+        const data = [
+          { month: 'Jan', temperature: 7.0 },
+          { month: 'Feb', temperature: 6.9 },
+          { month: 'Mar', temperature: 9.5 },
+          { month: 'Apr', temperature: 14.5 },
+          { month: 'May', temperature: 18.2 },
+          { month: 'Jun', temperature: 21.5 },
+          { month: 'Jul', temperature: 25.2 },
+          { month: 'Aug', temperature: 26.5 },
+          { month: 'Sep', temperature: 23.3 },
+          { month: 'Oct', temperature: 18.3 },
+          { month: 'Nov', temperature: 13.9 },
+          { month: 'Dec', temperature: 9.6 },
+        ];
+
+        chart.source(data, {
+          month: {
+            alias: '月份',
+            range: [0, 1],
+          },
+          temperature: {
+            alias: '平均温度(°C)',
+          },
+        });
+        chart
+          .line()
+          .position('month*temperature')
+          .size(2);
+        chart.render();
+      }
+```
+
+see the demo for more details
 + `angular-cli` please refer to [demo](./demo/src/app/).
-+ `Stackblitz` sample available [here](https://stackblitz.com/edit/g2-angular).
 
 ## Troubleshooting
 
 Please follow this guidelines when reporting bugs and feature requests:
 
-1. Use [GitHub Issues](https://github.com/cipchk/g2-angular/issues) board to report bugs and feature requests (not our email address)
+1. Use [GitHub Issues](https://github.com/hamdiwanis/ngx-f2/issues) board to report bugs and feature requests (not our email address)
 2. Please **always** write steps to reproduce the error. That way we can focus on fixing the bug, not scratching our heads trying to reproduce it.
 
 Thanks for understanding!
 
 ### License
 
-The MIT License (see the [LICENSE](https://github.com/cipchk/g2-angular/blob/master/LICENSE) file for the full text)
+The MIT License (see the [LICENSE](https://github.com/hamdiwanis/ngx-f2/blob/master/LICENSE) file for the full text)
